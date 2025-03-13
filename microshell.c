@@ -1,4 +1,8 @@
-#include <libc.h>
+#include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 void	my_perror(char *error, char *path)
 {
@@ -27,7 +31,7 @@ void	my_exec(char **argv, int i, char **envp)
 void	do_pipe(char **argv, int i, char **envp)
 {
 	int end[2];
-
+    
 	pipe(end);
 	if (!fork()) {
 		close(end[0]);
@@ -47,8 +51,9 @@ int main(int argc, char *argv[], char **envp)
 {
 	int	i;
 	int stdin_cpy = dup(0);
+    
 
-	argc = 0;
+    (void)argc;
 	while (argv[0] && argv[1])
 	{
 		argv++;

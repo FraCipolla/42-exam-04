@@ -10,7 +10,7 @@ test_line () {
 
 	echo >> out.res
 	echo >> out2.res
-	
+
 	diff -y --suppress-common-lines out.res out2.res
 	if [ $? -ne 0 ]
 	then
@@ -24,7 +24,7 @@ test_line () {
 
 clear
 printf "\e[1;32mCompile\n"
-gcc -g -Wall -Werror -Wextra -DTEST_SH my_microshell.c -o _microshell
+gcc -g -Wall -Werror -Wextra -DTEST_SH microshell.c -o _microshell
 
 
 printf "\e[1;36mTest\n\e[0m"
